@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python & Veri Bilimi Yolculuğu | Kişisel Geliştirici Profili</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & JetBrains Mono Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#090d16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+    <!-- Arka Plan Dekoratif Işık Efektleri -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Üst Navigasyon Çubuğu -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-950 font-mono font-bold text-lg shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    &gt;_
+                </div>
+                <span class="font-semibold tracking-tight text-white">dev<span class="text-emerald-400">.py</span></span>
+            </a>
+
+            <!-- Masaüstü Menü -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
+                <a href="#yetenekler" class="hover:text-emerald-400 transition-colors">Teknoloji Yığını</a>
+                <a href="#projeler" class="hover:text-emerald-400 transition-colors">Modüler Mimari</a>
+                <a href="#felsefe" class="hover:text-emerald-400 transition-colors">Çalışma Ritmi</a>
+                <a href="#lab" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5 text-cyan-400">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    İnteraktif Lab
+                </a>
+            </nav>
+
+            <!-- Mobil Menü Butonu -->
+            <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white" aria-label="Menüyü Aç">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Mobil Açılır Menü -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-5 space-y-2">
+            <a href="#yetenekler" class="block py-2.5 px-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Teknoloji Yığını</a>
+            <a href="#projeler" class="block py-2.5 px-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Modüler Mimari</a>
+            <a href="#felsefe" class="block py-2.5 px-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800">Çalışma Ritmi</a>
+            <a href="#lab" class="block py-2.5 px-3 rounded-lg text-sm font-medium text-emerald-400 bg-emerald-500/10">İnteraktif Veri & Odak Lab</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32 py-12 sm:py-20">
+
+        <!-- 1. BÖLÜM: KAHRAMAN (HERO) BÖLÜMÜ -->
+        <section class="relative pt-4 sm:pt-8">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Aktif Kurs Süreci Rozeti -->
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs sm:text-sm font-medium">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                        </span>
+                        Aktif Eğitim & Kurs Süreci • Python & Veri Bilimi Rotası
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+                        Temiz Koddan <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400">Yapay Zeka & Veri Bilimine</span> Uzanan Yolculuk
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl">
+                        Python’un modüler mimarisi, algoritma mantığı ve fonksiyon tabanlı tasarımıyla sağlam bir temel inşa ediyor; bu birikimi veri analizi, makine öğrenmesi ve yapay zeka çözümlerine dönüştürmek için adım adım ilerliyorum.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                        <a href="#projeler" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm sm:text-base transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                            Modüler Projemi İncele
+                        </a>
+                        <a href="#lab" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 font-semibold text-sm sm:text-base transition-all flex items-center gap-2">
+                            <i data-lucide="play" class="w-4 h-4 text-cyan-400"></i>
+                            Veri & Odak Lab'ı Dene
+                        </a>
+                    </div>
+
+                    <!-- Hızlı Özet Metrikler -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 max-w-lg">
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-white font-mono">Modüler</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Çok Dosyalı Mimari</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-mono">40 dk</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Yüksek Odak Bloğu</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-cyan-400 font-mono">AI & Data</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Birincil Hedef Alan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ Taraf: Terminal / Profil Kartı -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl overflow-hidden">
+                        <div class="px-4 py-3 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400">profil_ozeti.py</span>
+                            <i data-lucide="terminal" class="w-4 h-4 text-slate-500"></i>
+                        </div>
+                        <div class="p-5 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+<pre class="text-slate-300"><span class="text-purple-400">class</span> <span class="text-cyan-300">GelistiriciProfili</span>:
+    <span class="text-purple-400">def</span> <span class="text-emerald-400">__init__</span>(<span class="text-amber-300">self</span>):
+        <span class="text-amber-300">self</span>.odak = [
+            <span class="text-emerald-300">"Yapay Zeka"</span>,
+            <span class="text-emerald-300">"Veri Bilimi"</span>
+        ]
+        <span class="text-amber-300">self</span>.durum = <span class="text-emerald-300">"Aktif Kurs & Proje Geliştirme"</span>
+        <span class="text-amber-300">self</span>.temel_yapi = {
+            <span class="text-cyan-300">"dil"</span>: <span class="text-emerald-300">"Python 3"</span>,
+            <span class="text-cyan-300">"mimari"</span>: <span class="text-emerald-300">"Modüler CLI & Fonksiyonlar"</span>,
+            <span class="text-cyan-300">"ritim"</span>: <span class="text-emerald-300">"Kısa Odak + Spor & Oyun Dengesi"</span>
+        }
+
+    <span class="text-purple-400">def</span> <span class="text-emerald-400">sonraki_adim</span>(<span class="text-amber-300">self</span>):
+        <span class="text-purple-400">return</span> <span class="text-emerald-300">"NumPy -> Pandas -> Makine Öğrenmesi"</span></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. BÖLÜM: YETENEKLER VE TEKNOLOJİ YIĞINI -->
+        <section id="yetenekler" class="space-y-8 scroll-mt-24">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">01 / Yetkinlik Haritası</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Teknoloji Yığını & Öğrenme Rotası</h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-md">
+                    Mevcut Python temellerimi doğrudan veri bilimi ve yapay zeka kütüphanelerine köprüleyecek şekilde yapılandırıyorum.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Kart 1: Mevcut Python Çekirdeği -->
+                <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-6 hover:border-emerald-500/40 transition-all space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white">Python Çekirdek Yapısı</h3>
+                            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">Aktif</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mt-2">
+                            Okunabilir, tekrar kullanılabilir ve hata toleranslı kod yazımı üzerine kurulu temel yetkinlikler.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">Fonksiyonlar (def/return)</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">Modüler Mimari</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">Döngüler & Koşullar</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">random & Olasılık</span>
+                    </div>
+                </div>
+
+                <!-- Kart 2: Geliştirme Ortamı & Araçlar -->
+                <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-6 hover:border-cyan-500/40 transition-all space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                        <i data-lucide="git-branch" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white">Geliştirme & Sürüm Kontrolü</h3>
+                            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300">Günlük</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mt-2">
+                            Kod düzeni, paketleme ve projeleri düzenli olarak kayıt altına alma alışkanlığı.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">VS Code</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">Git & GitHub</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">CLI / Terminal</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-slate-200 border border-slate-700/60">Paket Yönetimi (__init__)</span>
+                    </div>
+                </div>
+
+                <!-- Kart 3: Yapay Zeka & Veri Bilimi Hedefleri -->
+                <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-6 hover:border-indigo-500/40 transition-all space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white">Veri Bilimi & AI Hedefleri</h3>
+                            <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300">Yol Haritası</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mt-2">
+                            Veri manipülasyonundan sinir ağlarına uzanan aşamalı uzmanlaşma planı.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-indigo-200 border border-indigo-500/30">NumPy</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-indigo-200 border border-indigo-500/30">Pandas</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-indigo-200 border border-indigo-500/30">Makine Öğrenmesi</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-xs font-mono text-indigo-200 border border-indigo-500/30">Derin Öğrenme</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BÖLÜM: ÖNE ÇIKAN MODÜLER PROJE VİTRİNİ -->
+        <section id="projeler" class="space-y-8 scroll-mt-24">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">02 / Mimari & Proje Vitrini</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Modüler Python Konsol Mimarisi</h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-md">
+                    Tek bir karmaşık dosya yerine <code class="text-emerald-400 font-mono">anamenu.py</code> üzerinden yönetilen, genişletilebilir <code class="text-cyan-400 font-mono">moduller/</code> paket yapısı.
+                </p>
+            </div>
+
+            <!-- Etkileşimli Proje Keşif Alanı -->
+            <div class="grid lg:grid-cols-12 gap-6 items-start">
+                <!-- Sol: Modül Kartları Seçici -->
+                <div class="lg:col-span-5 space-y-3" id="moduleCardsContainer">
+                    <!-- Kartlar JS ile etkileşimli yönetilecek -->
+                    <button data-module="anamenu" class="module-btn w-full text-left p-4 rounded-2xl bg-slate-900 border-2 border-emerald-500/60 transition-all flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-400 shrink-0">
+                            <i data-lucide="folder-tree" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-semibold text-white text-sm">anamenu.py</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Ana Kontrol</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Tüm alt modülleri içe aktaran, kullanıcı seçimlerini yöneten merkezi yönlendirici.</p>
+                        </div>
+                    </button>
+
+                    <button data-module="oyunlar" class="module-btn w-full text-left p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-cyan-500/15 text-cyan-400 shrink-0">
+                            <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-semibold text-white text-sm">moduller/oyunlar.py</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">Skor Takibi</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Taş-Kağıt-Makas, skor sayacı, bilgisayar seçim olasılığı ve tur bazlı kazanan analizi.</p>
+                        </div>
+                    </button>
+
+                    <button data-module="hesap" class="module-btn w-full text-left p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-amber-500/15 text-amber-400 shrink-0">
+                            <i data-lucide="calculator" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-semibold text-white text-sm">moduller/hesapmakinesi.py</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Matematik</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Temel aritmetik işlemler, hata yakalama ve fonksiyon bazlı hesaplama motoru.</p>
+                        </div>
+                    </button>
+
+                    <button data-module="cizim_takvim" class="module-btn w-full text-left p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-purple-500/15 text-purple-400 shrink-0">
+                            <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-semibold text-white text-sm">cizimler.py & takvim.py</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">Yardımcı Araçlar</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Döngülerle geometrik konsol çizimleri ve tarih/takvim sorgulama araçları.</p>
+                        </div>
+                    </button>
+
+                    <button data-module="veri_analizi" class="module-btn w-full text-left p-4 rounded-2xl bg-slate-900/60 border border-dashed border-indigo-500/50 hover:border-indigo-400 transition-all flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-indigo-500/15 text-indigo-400 shrink-0">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-semibold text-indigo-300 text-sm">moduller/veri_analizi.py</span>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">Sıradaki Modül</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Oyun ve spor verilerinden ortalama, dağılım ve temel tahmin çıkaran yeni nesil modül.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Sağ: Etkileşimli Kod & Mimari Önizleme Penceresi -->
+                <div class="lg:col-span-7 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden shadow-xl">
+                    <!-- Dizin Ağacı Üst Şeridi -->
+                    <div class="px-5 py-3.5 bg-slate-950/70 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2 font-mono text-xs text-slate-300">
+                            <i data-lucide="file-code" class="w-4 h-4 text-emerald-400"></i>
+                            <span id="previewFileName">proje_klasoru / anamenu.py</span>
+                        </div>
+                        <span id="previewBadge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-emerald-400 border border-slate-700">
+                            Mimari Merkezi
+                        </span>
+                    </div>
+
+                    <!-- Klasör Yapısı Özeti -->
+                    <div class="px-5 py-3 bg-slate-900/50 border-b border-slate-800/80 font-mono text-xs text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
+                        <span>📁 proje/</span>
+                        <span class="text-emerald-400">├── anamenu.py</span>
+                        <span class="text-cyan-400">└── 📁 moduller/</span>
+                        <span class="text-slate-400">(__init__.py, oyunlar.py, hesapmakinesi.py, veri_analizi.py)</span>
+                    </div>
+
+                    <!-- Dinamik Kod Bloğu -->
+                    <div class="p-5 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto min-h-[310px] flex flex-col justify-between">
+                        <pre id="previewCodeContent" class="text-slate-200"></pre>
+
+                        <div id="previewInsight" class="mt-6 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-200 flex items-start gap-2.5">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span id="previewInsightText">Bu yapı sayesinde her yeni özelliği bağımsız bir dosya olarak ekleyip ana menüye tek satırla bağlayabiliyorum.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. BÖLÜM: ÖĞRENME & ÇALIŞMA FELSEFESİ -->
+        <section id="felsefe" class="space-y-8 scroll-mt-24">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">03 / Sistem & Denge</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Öğrenme & Çalışma Felsefem</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- İlke 1 -->
+                <div class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/50 border border-slate-800 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center">
+                        <i data-lucide="timer" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">35–50 Dk Yüksek Odak Blokları</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Saatlerce masa başında verimsiz kalmak yerine, net bir hedefe odaklanan 35–50 dakikalık sprintler yapıyorum. Her bloğun sonunda çalışan bir fonksiyon veya çözülmüş bir problem ortaya koyup spor ve hareketle zihnimi tazeliyorum.
+                    </p>
+                </div>
+
+                <!-- İlke 2 -->
+                <div class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/50 border border-slate-800 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Teori + Pratik + Algoritma Üçlüsü</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Bir kavramın yalnızca sözdizimini ezberlemek yerine; önce arka plandaki teorik mantığını anlıyor, ardından algoritma sorularıyla pekiştiriyor ve modüler Python projelerimde gerçek senaryolara uyguluyorum.
+                    </p>
+                </div>
+
+                <!-- İlke 3 -->
+                <div class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/50 border border-slate-800 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Oyun & Spor Verilerinden Analitiğe</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Bilgisayar oyunlarındaki kazanma oranları, olasılık dağılımları ve spor performans verileri; veri bilimi ve makine öğrenmesi modellerini somutlaştırmak için benim en doğal deney alanım.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BÖLÜM: İNTERAKTİF MİNİ DEMO / SİMÜLATÖR -->
+        <section id="lab" class="space-y-8 scroll-mt-24">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">04 / Canlı Etkileşim</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">İnteraktif Odak & Veri Özeti Lab</h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-md">
+                    Çalışma ritmimi ve Python ile veri özetleme yaklaşımımı doğrudan tarayıcıda deneyimleyebileceğin iki mini araç.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-6">
+                <!-- Widget 1: 40 Dakikalık Odak Sprint Zamanlayıcı -->
+                <div class="lg:col-span-5 rounded-2xl bg-slate-900 border border-slate-800 p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">Odak Zamanlayıcı</span>
+                            <span id="timerStatusBadge" class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300">Hazır</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Kısa Blok Sprint Sayacı</h3>
+                        <p class="text-xs text-slate-400">Masa başı verimliliğini korumak için blok süresini seç ve başlat.</p>
+                    </div>
+
+                    <!-- Süre Seçici Butonlar -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setTimerMinutes(35)" class="preset-btn py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300 border border-slate-700 transition-colors">35 Dk</button>
+                        <button onclick="setTimerMinutes(40)" class="preset-btn py-2 px-3 rounded-xl bg-emerald-500/20 text-emerald-300 text-xs font-mono border border-emerald-500/50 transition-colors">40 Dk (İdeal)</button>
+                        <button onclick="setTimerMinutes(50)" class="preset-btn py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300 border border-slate-700 transition-colors">50 Dk</button>
+                    </div>
+
+                    <!-- Dijital Sayaç Göstergesi -->
+                    <div class="py-6 rounded-2xl bg-slate-950 border border-slate-800/90 text-center space-y-2">
+                        <div id="timerDisplay" class="text-4xl sm:text-5xl font-mono font-bold text-white tracking-wider">40:00</div>
+                        <div id="timerHint" class="text-xs text-slate-400">Hedef: 1 Python modülü veya 2 algoritma sorusu</div>
+                    </div>
+
+                    <!-- Kontrol Butonları -->
+                    <div class="flex items-center gap-3">
+                        <button id="startPauseBtn" onclick="toggleTimer()" class="flex-1 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="play" class="w-4 h-4"></i>
+                            <span>Başlat</span>
+                        </button>
+                        <button onclick="resetTimer()" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-sm border border-slate-700 transition-all" title="Sıfırla">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Widget 2: Oyun & Spor Veri Analizi Simülatörü -->
+                <div class="lg:col-span-7 rounded-2xl bg-slate-900 border border-slate-800 p-6 flex flex-col justify-between space-y-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">veri_analizi.py Simülasyonu</span>
+                            <h3 class="text-xl font-bold text-white">Oyun & Spor Performans Veri Özeti</h3>
+                            <p class="text-xs text-slate-400">Veri seti seç veya yeni rastgele kayıt ekleyerek anlık istatistikleri gözlemle.</p>
+                        </div>
+
+                        <!-- Veri Seti Değiştirici -->
+                        <div class="flex rounded-xl bg-slate-950 p-1 border border-slate-800">
+                            <button id="datasetGameBtn" onclick="switchDataset('game')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 transition-colors">
+                                🎮 Oyun Skorları
+                            </button>
+                            <button id="datasetSportBtn" onclick="switchDataset('sport')" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-colors">
+                                🏃 Spor Aktivitesi
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- İstatistik Özet Kartları (Mean, Max, Min, Trend) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] font-mono text-slate-400">Ortalama (Mean)</div>
+                            <div id="statMean" class="text-xl font-bold font-mono text-emerald-400 mt-1">0</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] font-mono text-slate-400">En Yüksek (Max)</div>
+                            <div id="statMax" class="text-xl font-bold font-mono text-cyan-400 mt-1">0</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] font-mono text-slate-400">En Düşük (Min)</div>
+                            <div id="statMin" class="text-xl font-bold font-mono text-amber-400 mt-1">0</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] font-mono text-slate-400">Kayıt Sayısı (N)</div>
+                            <div id="statCount" class="text-xl font-bold font-mono text-indigo-400 mt-1">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Mini Çubuk Grafik Görselleştirmesi -->
+                    <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span id="chartTitle">Son 7 Oturum Skor Dağılımı</span>
+                            <span id="chartUnit" class="text-cyan-400">Birim: Puan</span>
+                        </div>
+                        <div id="barChartContainer" class="h-32 flex items-end gap-2.5 pt-4 px-1">
+                            <!-- Çubuklar JS tarafından oluşturulur -->
+                        </div>
+                    </div>
+
+                    <!-- Aksiyon & Çıktı Satırı -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+                        <div id="aiInsightBadge" class="text-xs font-mono text-slate-300 bg-slate-800/80 px-3 py-2 rounded-lg border border-slate-700/70">
+                            Analiz hazır.
+                        </div>
+                        <button onclick="addRandomDataPoint()" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all flex items-center gap-2">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                            Yeni Veri Ekle (random)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Alt Bilgi (Footer) -->
+    <footer class="border-t border-slate-800/80 bg-slate-950/90 mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Python • Yapay Zeka • Veri Bilimi Yolculuğu</span>
+            </div>
+            <div class="font-mono text-slate-500">
+                Modüler Düşün • Kısa Bloklarla Odaklan • Sürekli Geliştir
+            </div>
+        </div>
+    </footer>
+
+    <!-- Etkileşimli JavaScript Mantığı -->
+    <script>
+        // Lucide ikonlarını başlat
+        lucide.createIcons();
+
+        // Mobil menü açma/kapama
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // ---------------------------------------------------------
+        // 1. MODÜLER PROJE VİTRİNİ ETKİLEŞİM VERİLERİ
+        // ---------------------------------------------------------
+        const moduleDetails = {
+            anamenu: {
+                fileName: "proje_klasoru / anamenu.py",
+                badge: "Mimari Merkezi",
+                insight: "Bu yapı sayesinde her yeni özelliği bağımsız bir dosya olarak ekleyip ana menüye tek satırla bağlayabiliyorum.",
+                code: `<span class="text-purple-400">from</span> moduller <span class="text-purple-400">import</span> oyunlar, hesapmakinesi, veri_analizi
+
+<span class="text-purple-400">def</span> <span class="text-emerald-400">ana_menu</span>():
+    <span class="text-purple-400">while True</span>:
+        <span class="text-cyan-300">print</span>(<span class="text-emerald-300">"\\n=== MODÜLER PYTHON MERKEZİ ==="</span>)
+        <span class="text-cyan-300">print</span>(<span class="text-emerald-300">"1- Oyunlar (Taş-Kağıt-Makas)\\n2- Hesap Makinesi\\n3- Veri Analizi\\n0- Çıkış"</span>)
+        secim = <span class="text-cyan-300">input</span>(<span class="text-emerald-300">"Seçiminiz: "</span>)
+
+        <span class="text-purple-400">if</span> secim == <span class="text-emerald-300">"1"</span>:
+            oyunlar.tas_kagit_makas()
+        <span class="text-purple-400">elif</span> secim == <span class="text-emerald-300">"2"</span>:
+            hesapmakinesi.baslat()
+        <span class="text-purple-400">elif</span> secim == <span class="text-emerald-300">"3"</span>:
+            veri_analizi.ozet_cikar()
+        <span class="text-purple-400">elif</span> secim == <span class="text-emerald-300">"0"</span>:
+            <span class="text-purple-400">break</span>`
+            },
+            oyunlar: {
+                fileName: "proje_klasoru / moduller / oyunlar.py",
+                badge: "Skor & Olasılık",
+                insight: "random.choice() ve skor sayaçları, veri bilimindeki rastgele örnekleme ve durum takibinin temel mantığını oluşturur.",
+                code: `<span class="text-purple-400">import</span> random
+
+<span class="text-purple-400">def</span> <span class="text-emerald-400">tas_kagit_makas</span>():
+    secenekler = [<span class="text-emerald-300">"taş"</span>, <span class="text-emerald-300">"kağıt"</span>, <span class="text-emerald-300">"makas"</span>]
+    oyuncu_skor, pc_skor = <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>
+
+    <span class="text-purple-400">while True</span>:
+        hamle = <span class="text-cyan-300">input</span>(<span class="text-emerald-300">"Hamleniz (çıkış için q): "</span>).lower()
+        <span class="text-purple-400">if</span> hamle == <span class="text-emerald-300">"q"</span>:
+            <span class="text-purple-400">break</span>
+        pc = random.choice(secenekler)
+        <span class="text-slate-500"># Kazanma durumu kontrolü ve anlık skor güncellemesi</span>
+        <span class="text-purple-400">if</span> hamle == pc:
+            <span class="text-cyan-300">print</span>(<span class="text-emerald-300">f"Berabere! Skor: {oyuncu_skor}-{pc_skor}"</span>)`
+            },
+            hesap: {
+                fileName: "proje_klasoru / moduller / hesapmakinesi.py",
+                badge: "Fonksiyonel Tasarım",
+                insight: "Her işlemi ayrı bir fonksiyona bölmek ve sıfıra bölme gibi uç durumları yakalamak temiz kodun temelidir.",
+                code: `<span class="text-purple-400">def</span> <span class="text-emerald-400">islem_yap</span>(a, b, operator):
+    <span class="text-purple-400">if</span> operator == <span class="text-emerald-300">"+"</span>:
+        <span class="text-purple-400">return</span> a + b
+    <span class="text-purple-400">elif</span> operator == <span class="text-emerald-300">"-"</span>:
+        <span class="text-purple-400">return</span> a - b
+    <span class="text-purple-400">elif</span> operator == <span class="text-emerald-300">"*"</span>:
+        <span class="text-purple-400">return</span> a * b
+    <span class="text-purple-400">elif</span> operator == <span class="text-emerald-300">"/"</span>:
+        <span class="text-purple-400">return</span> a / b <span class="text-purple-400">if</span> b != <span class="text-amber-300">0</span> <span class="text-purple-400">else</span> <span class="text-emerald-300">"Sıfıra bölünemez"</span>`
+            },
+            cizim_takvim: {
+                fileName: "proje_klasoru / moduller / cizimler.py",
+                badge: "Döngü Algoritmaları",
+                insight: "İç içe döngülerle desen oluşturmak, çok boyutlu diziler ve matris indeksleme mantığına zemin hazırlar.",
+                code: `<span class="text-purple-400">def</span> <span class="text-emerald-400">piramit_ciz</span>(satir_sayisi):
+    <span class="text-purple-400">for</span> i <span class="text-purple-400">in</span> <span class="text-cyan-300">range</span>(<span class="text-amber-300">1</span>, satir_sayisi + <span class="text-amber-300">1</span>):
+        bosluk = <span class="text-emerald-300">" "</span> * (satir_sayisi - i)
+        yildiz = <span class="text-emerald-300">"*"</span> * (<span class="text-amber-300">2</span> * i - <span class="text-amber-300">1</span>)
+        <span class="text-cyan-300">print</span>(bosluk + yildiz)`
+            },
+            veri_analizi: {
+                fileName: "proje_klasoru / moduller / veri_analizi.py",
+                badge: "Veri Bilimi Köprüsü",
+                insight: "Harici kütüphanelere geçmeden önce saf Python ile ortalama, uç değer ve eşik analizi kurgulamak veri sezgisi kazandırır.",
+                code: `<span class="text-purple-400">def</span> <span class="text-emerald-400">performans_ozeti</span>(veriler):
+    ortalama = <span class="text-cyan-300">sum</span>(veriler) / <span class="text-cyan-300">len</span>(veriler)
+    en_yuksek = <span class="text-cyan-300">max</span>(veriler)
+    ust_performans = [v <span class="text-purple-400">for</span> v <span class="text-purple-400">in</span> veriler <span class="text-purple-400">if</span> v > ortalama]
+
+    <span class="text-purple-400">return</span> {
+        <span class="text-emerald-300">"ortalama"</span>: <span class="text-cyan-300">round</span>(ortalama, <span class="text-amber-300">2</span>),
+        <span class="text-emerald-300">"zirve"</span>: en_yuksek,
+        <span class="text-emerald-300">"ort_ustu_sayisi"</span>: <span class="text-cyan-300">len</span>(ust_performans)
+    }`
+            }
+        };
+
+        const previewFileName = document.getElementById('previewFileName');
+        const previewBadge = document.getElementById('previewBadge');
+        const previewCodeContent = document.getElementById('previewCodeContent');
+        const previewInsightText = document.getElementById('previewInsightText');
+        const moduleButtons = document.querySelectorAll('.module-btn');
+
+        function renderModulePreview(key) {
+            const data = moduleDetails[key];
+            if (!data) return;
+            previewFileName.textContent = data.fileName;
+            previewBadge.textContent = data.badge;
+            previewCodeContent.innerHTML = data.code;
+            previewInsightText.textContent = data.insight;
+
+            moduleButtons.forEach(btn => {
+                if (btn.dataset.module === key) {
+                    btn.className = "module-btn w-full text-left p-4 rounded-2xl bg-slate-900 border-2 border-emerald-500/60 transition-all flex items-start gap-3.5";
+                } else {
+                    btn.className = "module-btn w-full text-left p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex items-start gap-3.5";
+                }
+            });
+        }
+
+        moduleButtons.forEach(btn => {
+            btn.addEventListener('click', () => renderModulePreview(btn.dataset.module));
+        });
+
+        // Başlangıç önizlemesini yükle
+        renderModulePreview('anamenu');
+
+        // ---------------------------------------------------------
+        // 2. ODAK ZAMANLAYICI (35-50 DK SPRINT) MANTIĞI
+        // ---------------------------------------------------------
+        let defaultMinutes = 40;
+        let remainingSeconds = defaultMinutes * 60;
+        let timerInterval = null;
+        let isRunning = false;
+
+        const timerDisplay = document.getElementById('timerDisplay');
+        const startPauseBtn = document.getElementById('startPauseBtn');
+        const timerStatusBadge = document.getElementById('timerStatusBadge');
+        const timerHint = document.getElementById('timerHint');
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+
+        function setTimerMinutes(mins) {
+            pauseTimer();
+            defaultMinutes = mins;
+            remainingSeconds = mins * 60;
+            timerDisplay.textContent = formatTime(remainingSeconds);
+            timerStatusBadge.textContent = `${mins} Dk Seçildi`;
+            timerStatusBadge.className = "text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-emerald-300";
+
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                if (btn.textContent.includes(String(mins))) {
+                    btn.className = "preset-btn py-2 px-3 rounded-xl bg-emerald-500/20 text-emerald-300 text-xs font-mono border border-emerald-500/50 transition-colors";
+                } else {
+                    btn.className = "preset-btn py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300 border border-slate-700 transition-colors";
+                }
+            });
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            if (remainingSeconds <= 0) remainingSeconds = defaultMinutes * 60;
+            isRunning = true;
+            startPauseBtn.innerHTML = `<i data-lucide="pause" class="w-4 h-4"></i><span>Duraklat</span>`;
+            startPauseBtn.className = "flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-all flex items-center justify-center gap-2";
+            timerStatusBadge.textContent = "Odak Aktif";
+            timerStatusBadge.className = "text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300";
+            lucide.createIcons();
+
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+                timerDisplay.textContent = formatTime(remainingSeconds);
+                if (remainingSeconds <= 0) {
+                    pauseTimer();
+                    timerStatusBadge.textContent = "Blok Tamamlandı!";
+                    timerHint.textContent = "Harika! Şimdi masa başından kalkıp kısa bir hareket molası verme zamanı.";
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            isRunning = false;
+            clearInterval(timerInterval);
+            startPauseBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i><span>Devam Et</span>`;
+            startPauseBtn.className = "flex-1 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-all flex items-center justify-center gap-2";
+            if (remainingSeconds === defaultMinutes * 60) {
+                startPauseBtn.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i><span>Başlat</span>`;
+            }
+            lucide.createIcons();
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            remainingSeconds = defaultMinutes * 60;
+            timerDisplay.textContent = formatTime(remainingSeconds);
+            timerStatusBadge.textContent = "Hazır";
+            timerStatusBadge.className = "text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300";
+            timerHint.textContent = "Hedef: 1 Python modülü veya 2 algoritma sorusu";
+        }
+
+        // ---------------------------------------------------------
+        // 3. OYUN & SPOR VERİ ÖZETİ SİMÜLATÖRÜ
+        // ---------------------------------------------------------
+        const datasets = {
+            game: {
+                title: "Son Maç Skorları (Oyun Performansı)",
+                unit: "Puan",
+                minRange: 45,
+                maxRange: 98,
+                values: [64, 78, 72, 85, 91, 69, 88]
+            },
+            sport: {
+                title: "Antrenman Süreleri (Aktif Yaşam)",
+                unit: "Dakika",
+                minRange: 30,
+                maxRange: 75,
+                values: [45, 50, 35, 60, 55, 40, 65]
+            }
+        };
+
+        let currentDatasetKey = 'game';
+
+        function switchDataset(key) {
+            currentDatasetKey = key;
+            const gameBtn = document.getElementById('datasetGameBtn');
+            const sportBtn = document.getElementById('datasetSportBtn');
+
+            if (key === 'game') {
+                gameBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 transition-colors";
+                sportBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-colors";
+            } else {
+                sportBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/20 text-emerald-300 transition-colors";
+                gameBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-colors";
+            }
+            updateDataLab();
+        }
+
+        function addRandomDataPoint() {
+            const ds = datasets[currentDatasetKey];
+            const newVal = Math.floor(Math.random() * (ds.maxRange - ds.minRange + 1)) + ds.minRange;
+            ds.values.push(newVal);
+            if (ds.values.length > 8) {
+                ds.values.shift(); // Son 8 kaydı pencerede tut
+            }
+            updateDataLab();
+        }
+
+        function updateDataLab() {
+            const ds = datasets[currentDatasetKey];
+            const vals = ds.values;
+            const sum = vals.reduce((acc, v) => acc + v, 0);
+            const mean = (sum / vals.length).toFixed(1);
+            const maxVal = Math.max(...vals);
+            const minVal = Math.min(...vals);
+            const aboveAvgCount = vals.filter(v => v > parseFloat(mean)).length;
+
+            document.getElementById('statMean').textContent = mean;
+            document.getElementById('statMax').textContent = maxVal;
+            document.getElementById('statMin').textContent = minVal;
+            document.getElementById('statCount').textContent = vals.length;
+            document.getElementById('chartTitle').textContent = ds.title;
+            document.getElementById('chartUnit').textContent = `Birim: ${ds.unit}`;
+            document.getElementById('aiInsightBadge').textContent =
+                `Çıkarım: ${vals.length} kaydın ${aboveAvgCount} tanesi ortalamanın (${mean}) üzerinde.`;
+
+            // Çubuk grafiği çiz
+            const container = document.getElementById('barChartContainer');
+            container.innerHTML = '';
+
+            vals.forEach((val, idx) => {
+                const heightPercent = Math.max(18, Math.round((val / 100) * 100));
+                const isLatest = idx === vals.length - 1;
+                const barWrapper = document.createElement('div');
+                barWrapper.className = "flex-1 flex flex-col items-center gap-1.5 h-full justify-end";
+
+                const valLabel = document.createElement('span');
+                valLabel.className = `text-[10px] font-mono ${isLatest ? 'text-emerald-300 font-bold' : 'text-slate-400'}`;
+                valLabel.textContent = val;
+
+                const bar = document.createElement('div');
+                bar.style.height = `${heightPercent}%`;
+                bar.className = `w-full max-w-[36px] rounded-t-lg transition-all duration-300 ${
+                    isLatest
+                        ? 'bg-gradient-to-t from-emerald-500 to-cyan-400 shadow-lg shadow-cyan-500/20'
+                        : 'bg-slate-800 hover:bg-slate-700'
+                }`;
+
+                barWrapper.appendChild(valLabel);
+                barWrapper.appendChild(bar);
+                container.appendChild(barWrapper);
+            });
+        }
+
+        // Başlangıçta veri laboratuvarını yükle
+        updateDataLab();
+    </script>
+</body>
+</html>
